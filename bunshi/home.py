@@ -34,15 +34,15 @@ def home():
                                    pageURL = pageURL,
                                    recent = recent)
 
-        except TypeError as e:
-            error = True
-            imageSource = ""
-            pageURL = ""
+    except TypeError as e:
+        error = True
+        imageSource = ""
+        pageURL = ""
 
-            return render_template("home.html",
-                                   compound = compound,
-                                   error = esrror,
-                                   recent = recent)
+        return render_template("home.html",
+                               compound = compound,
+                               error = esrror,
+                               recent = recent)
 
     # return render_template("home.html",
     #                        recent = recent)
