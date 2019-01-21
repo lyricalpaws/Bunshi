@@ -11,9 +11,8 @@ def home():
     compound = ""
     imageSource = ""
     pageURL = ""
-    try:
-        error = False
 
+    try:
         if request.method == "POST":
             posts = request.form
             for post in posts.items():
@@ -31,15 +30,15 @@ def home():
                 recent.pop(-1)
 
         return render_template("home.html",
+                               error = False
                                imageSource = imageSource,
                                compound = compound,
                                pageURL = pageURL,
                                recent = recent)
 
     except TypeError as e:
-        error = True
 
         return render_template("home.html",
-                               error = error,
+                               error = True,
                                compound = compound,
                                recent = recent)
