@@ -26,14 +26,14 @@ def home():
                 recent.pop(-1)
 
             return render_template("home.html",
-                                   error = False
+                                   error = False,
                                    recent = recent,
                                    imageSource = imageSource,
                                    compound = compound,
                                    pageURL = pageURL)
 
         return render_template("home.html",
-                               error = False
+                               error = False,
                                recent = recent)
 
     except TypeError as e:
