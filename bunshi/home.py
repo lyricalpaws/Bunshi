@@ -8,10 +8,6 @@ recentMax = 5
 @app.route("/", methods = ["POST", "GET"])
 def home():
     flash(recent)
-    compound = ""
-    imageSource = ""
-    pageURL = ""
-
     try:
         if request.method == "POST":
             posts = request.form
@@ -29,16 +25,20 @@ def home():
             if len(recent) > recentMax:
                 recent.pop(-1)
 
+            return render_template("home.html",
+                                   error = False
+                                   recent = recent,
+                                   imageSource = imageSource,
+                                   compound = compound,
+                                   pageURL = pageURL)
+
         return render_template("home.html",
                                error = False
-                               imageSource = imageSource,
-                               compound = compound,
-                               pageURL = pageURL,
                                recent = recent)
 
     except TypeError as e:
 
         return render_template("home.html",
                                error = True,
-                               compound = compound,
-                               recent = recent)
+                               recent = recent,
+                               compound = compound)
