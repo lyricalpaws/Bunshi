@@ -38,6 +38,6 @@ def home():
                                pageURL = pageURL,
                                error = error,
                                recent = recent)
-
+    flash(recent)
     return render_template("home.html",
                            recent = recent)
