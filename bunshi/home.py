@@ -4,13 +4,13 @@ from flask import flash, render_template, session, request
 
 recent = []
 recentMax = 5
-compound = ""
-imageSource = ""
-pageURL = ""
 
 @app.route("/", methods = ["POST", "GET"])
 def home():
     flash(recent)
+    compound = ""
+    imageSource = ""
+    pageURL = ""
     try:
         error = False
 
