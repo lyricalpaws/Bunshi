@@ -7,7 +7,7 @@ recentMax = 5
 
 @app.route("/", methods = ["POST", "GET"])
 def home():
-    # flash(recent)
+    flash(recent)
     if request.method == "POST":
         posts = request.form
 
