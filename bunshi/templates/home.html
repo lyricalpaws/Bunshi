@@ -61,15 +61,9 @@
             {% if recent|length > 1 %}
                 <p> Recent searches: </p>
                 {% for search in recent %}
-                    {% if search != recent[0] %}
-                        <form method="post">
-                            <input name="recent" id="recent" type="submit" value="{{ search }}"></input>
-                        </form>
-                    {% elif error %}
-                        <form method="post">
-                            <input name="recent" id="recent" type="submit" value="{{ search }}"></input>
-                        </form>
-                    {% endif %}
+                    <form method="post">
+                        <input name="recent" id="recent" type="submit" value="{{ search }}"></input>
+                    </form>
                 {% endfor %}
             {% endif %}
         </body>
