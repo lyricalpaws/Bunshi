@@ -60,7 +60,7 @@
             ------------------------------------------------------------------->
             {% if recent|length > 1 %}
                 <p> Recent searches: </p>
-                {% for search in recent %}
+                {% for search in recent[1:] %}
                     <form method="post">
                         <input name="recent" id="recent" type="submit" value="{{ search }}"></input>
                     </form>
