@@ -9,9 +9,7 @@ recentMax = 5
 def home():
     # flash(recent)
     if request.method == "POST":
-        session["compound"] = request.form["compound"]
-        for post in posts.items():
-            session["compound"] = post[1].lower()
+        session["compound"] = request.form["compound"].lower()
 
         try:
             error = False
