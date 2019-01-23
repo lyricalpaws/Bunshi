@@ -1,4 +1,4 @@
 import os
 
 class Config(object):
-    SECRET_KEY = os.urandom(16) # or "acetate"
+    session.secret_key = os.urandom(24) # or "acetate"

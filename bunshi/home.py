@@ -1,6 +1,6 @@
+from flask import flash, render_template, session, request
 from bunshi import app
 from bunshi.image import getImage
-from flask import flash, render_template, session, request
 
 recent = []
 recentMax = 5
@@ -9,19 +9,19 @@ recentMax = 5
 def home():
     # flash(recent)
     if request.method == "POST":
-        posts = request.form
+        session["compound"] = request.form["compound"]
         for post in posts.items():
-            compound = post[1].lower()
+            session["compound"] = post[1].lower()
 
         try:
             error = False
-            links = getImage(compound)
+            links = getImage(session["compound"])
             imageSource = links[0]
             pageURL = links[1]
 
-            if compound in recent:
-                recent.remove(compound)
-            recent.insert(0, compound)
+            if session["compound"] in recent:
+                recent.remove(session["compound"])
+            recent.insert(0, session["compound"])
 
             if len(recent) > recentMax:
                 recent.pop(-1)
@@ -33,7 +33,7 @@ def home():
 
         return render_template("home.html",
                                imageSource = imageSource,
-                               compound = compound,
+                               compound = session["compound"],
                                pageURL = pageURL,
                                error = error,
                                recent = recent)
